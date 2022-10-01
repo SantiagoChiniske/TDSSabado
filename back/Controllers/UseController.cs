@@ -26,6 +26,29 @@ public class UserController : ControllerBase
     usuario.UserId = user.UserId;
     usuario.Senha = user.Password;
 
+    List<string> errors = new List<string>();
+    if(usuario.Nome.Length<5){
+        errors.Add("O nome do usuário precisa conter ao menos 5 letras.");
+    }
+
+    if( context.Usuarios
+    .Where(u => u.UserId == user.UserId)
+    .Any()){
+        errors.Add("Seu nome de Usuário já está em uso!");
+    }
+
+
+    if(errors.Count>0)
+    {
+        return this.BadRequest(errors);
+    }
+
+
+    // var query2 =
+    // from u in context.Usuarios
+    // where u.Nome == user.UserId
+    // select u;
+
     context.Add(usuario);
     context.SaveChanges();
 
