@@ -1,0 +1,12 @@
+USE MASTER
+GO
+
+IF EXISTS(SELECT * FROM sys.databases WHERE NAME ='TDSabado')
+	DROP DATABASE TDSabado
+go
+
+CREATE DATABASE TDSabado
+go
+
+USE TDSabado
+go
