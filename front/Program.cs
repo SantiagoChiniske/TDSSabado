@@ -1,11 +1,22 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using front.Services;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+string server = "https://localhost:7058";
+
+//if (builder.Environment.IsProduction())
+//{
+//    server ="Link da Nuvem";
+//}
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddSingleton(provider => new UserServices(server));
 
 var app = builder.Build();
 

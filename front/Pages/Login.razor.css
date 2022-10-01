@@ -1,3 +1,23 @@
 .registercontainer{
     padding: 10px;
+    background-color: cadetblue;
+    border: 5px;
+    border-color: black;
+    border-radius: 5px;
+}
+
+.logrecontainer{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logincontainer{
+    padding: 10px;
+    background-color: cadetblue;
+    border: 5px;
+    border-color: black;
+    border-radius: 5px;
 }

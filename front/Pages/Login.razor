@@ -1,51 +1,76 @@
 @page "/login"
 @using Services;
 
+@inject UserServices Services
 
-<div class="registercontainer"> 
-<p>
-    <label for="">Nome Completo:</label>
-    <input type="text" @bind-value="name"/>
-</p>
-<br>
-<p>
-    <label>Senha</label>
-    <input type="Password" @bind-value="Password"/>
-</p>
+<div class="logrecontainer">
+    <div class="registercontainer"> 
+    <p>
+        <label for="">Nome Completo:</label>
+        <input type="text" @bind-value="name"/>
+    </p>
+    <p>
+        <label>Senha</label>
+        <input type="Password" @bind-value="Password"/>
+    </p>
+      <p>
+        <label>Repetir Senha</label>
+        <input type="Password" @bind-value="repeatPassword"/>
+    </p>
+    <p>
+        <label for="">Data de Nascimento</label>
+        <input type="date" @bind-value="birth"/>
 
-<p>
-    <label for="">Data de Nascimento</label>
-    <input type="date" @bind-value="birth"/>
+    </p>
 
-</p>
+    <p>
+        <label for="">Nome de usuário</label>
+        <input type="text" @bind-value="userId"/>
+    </p>
 
-<p>
-    <label for="">Nome de usuário</label>
-    <input type="text" @bind-value="userId"/>
-</p>
+    <button @onclick="CreateAccount">criar conta</button>
 
-<button @onclick="CreateAccount">criar conta</button>
+   
+    </div>
 
+    <div class="logincontainer">
+    <p>
+        <label for="">Nome Completo:</label>
+        <input type="text" @bind-value="name"/>
+    </p>
+    <p>
+        <label>Senha</label>
+        <input type="Password" @bind-value="Password"/>
+    </p>
+    <button onclick="@UserLogin">Logar</button>
 
-@code{
+   
+    
+    </div>
 
-    private string name;
-    private string Password;
-    private DateTime birth;
-    private string userId;
-
-    public async void CreateAccount(){
-
-        UserServices service = new UserServices("https://localhost:7058");
-
-        await service.Register(
-            this.name, 
-            this.userId,
-            this.birth, 
-            this.Password );
-            
-        
-    }
-}
 </div>
 
+ @code{
+
+        private string name;
+        private string Password;
+        private string repeatPassword;
+        private DateTime birth;
+        private string userId;
+
+        public async void CreateAccount(){
+
+            UserServices service = new UserServices("https://localhost:7058");
+
+            await service.Register(
+                this.name, 
+                this.userId,
+                this.birth, 
+                this.Password );
+               
+        }
+            public async void UserLogin()
+            {
+
+            }
+    }

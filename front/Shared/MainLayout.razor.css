@@ -2,6 +2,24 @@ main {
     flex: 1;
 }
 
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    list-style: none;
+}
+.navigation a{
+    display: block;
+    color: white;
+    padding: 1em;
+    text-decoration: none;
+
+}
+
+.navigation a:hover{
+    background-color: purple;
+}
+
 header{
     background-color: blueviolet;
     color: white;
